@@ -1,3 +1,4 @@
+
 CREATE DATABASE Bd_Inmobiliaria;
 USE Bd_Inmobiliaria;
 
@@ -21,6 +22,14 @@ create table OperatoriaComercial
     Nombre_Operatoria_Comercial varchar(30)
     );
 
+create table Propietario
+	(
+    Id_Propietario int not null auto_increment primary key,
+    Nombre varchar(40),
+    Direccion varchar(50),
+    Contacto int
+    );
+
 create table Propiedad
 	(
     Id_Propiedad int not null auto_increment primary key,
@@ -33,24 +42,11 @@ create table Propiedad
     Contacto int
     );
 
-create table Propietario
-	(
-    Id_Propietario int not null auto_increment primary key,
-    Nombre varchar(40),
-    Direccion varchar(50),
-    Contacto int,
-    Id_Propiedad int,
-    constraint Propietario_fk foreign key (Id_Propiedad)
-    references Propiedad (Id_Propiedad)
-    );
-
-
 alter table Propiedad add foreign key (Id_Tipo) references Tipo (Id_Tipo);
 
 alter table Propiedad add foreign key (Id_Estado) references Estado (Id_Estado);
 
 alter table Propiedad add foreign key (Id_Operacion_Comercial) references OperatoriaComercial (Id_Operatoria_Comercial);
 
-alter table Propiedad add foreign key (Id_Propietario) references Propietario (Id_Propietario);
-    
+alter table Propiedad add foreign key (Id_Propietario) references	Propietario (Id_Propietario);
     
