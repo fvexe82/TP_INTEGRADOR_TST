@@ -19,9 +19,8 @@ create table Estado
     Nombre_Estado varchar(30)
     );
 INSERT INTO `bd_inmobiliaria`.`estado` (`Id_Estado`, `Nombre_Estado`) VALUES ('1', 'Disponible');
-INSERT INTO `bd_inmobiliaria`.`estado` (`Id_Estado`, `Nombre_Estado`) VALUES ('2', 'Señada');
-INSERT INTO `bd_inmobiliaria`.`estado` (`Id_Estado`, `Nombre_Estado`) VALUES ('3', 'Alquilado');
-INSERT INTO `bd_inmobiliaria`.`estado` (`Id_Estado`, `Nombre_Estado`) VALUES ('4', 'Vendido');
+INSERT INTO `bd_inmobiliaria`.`estado` (`Id_Estado`, `Nombre_Estado`) VALUES ('2', 'Alquilada');
+INSERT INTO `bd_inmobiliaria`.`estado` (`Id_Estado`, `Nombre_Estado`) VALUES ('3', 'Vendida');
     
     
 create table OperatoriaComercial
@@ -29,9 +28,9 @@ create table OperatoriaComercial
     Id_Operatoria_Comercial int not null auto_increment primary key,
     Nombre_Operatoria_Comercial varchar(30)
     );
-INSERT INTO `bd_inmobiliaria`.`operatoriacomercial` (`Id_Operatoria_Comercial`, `Nombre_Operatoria_Comercial`) VALUES ('1', 'Venta');
+INSERT INTO `bd_inmobiliaria`.`operatoriacomercial` (`Id_Operatoria_Comercial`, `Nombre_Operatoria_Comercial`) VALUES ('1', 'Disponible');
 INSERT INTO `bd_inmobiliaria`.`operatoriacomercial` (`Id_Operatoria_Comercial`, `Nombre_Operatoria_Comercial`) VALUES ('2', 'Alquiler');
-INSERT INTO `bd_inmobiliaria`.`operatoriacomercial` (`Id_Operatoria_Comercial`, `Nombre_Operatoria_Comercial`) VALUES ('3', 'En Disponibilidad');
+INSERT INTO `bd_inmobiliaria`.`operatoriacomercial` (`Id_Operatoria_Comercial`, `Nombre_Operatoria_Comercial`) VALUES ('3', 'Venta');
 
 create table Propietario
 	(
@@ -42,6 +41,9 @@ create table Propietario
     );
 INSERT INTO `bd_inmobiliaria`.`propietario` (`Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('1', 'Fernando Vexenat', 'Av rancagua 2000', '4887766');
 INSERT INTO `bd_inmobiliaria`.`propietario` (`Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('2', 'Carolina Nis', 'Av Ejercito Arg. 4567', '4778899');
+INSERT INTO `bd_inmobiliaria`.`propietario` (`Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('3', 'Leonardo Gonzalez', '27 de Abril 1345', '4332456');
+INSERT INTO `bd_inmobiliaria`.`propietario` (`Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('4', 'Andres Montaño', 'San Jeronimo 34', '4221234');
+INSERT INTO `bd_inmobiliaria`.`propietario` (`Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('5', 'Mirta Legrand', 'Av Colon 1250', '4323367');
 
 create table Propiedad
 	(
@@ -62,3 +64,14 @@ alter table Propiedad add foreign key (Id_Estado) references Estado (Id_Estado);
 alter table Propiedad add foreign key (Id_Operacion_Comercial) references OperatoriaComercial (Id_Operatoria_Comercial);
 
 alter table Propiedad add foreign key (Id_Propietario) references	Propietario (Id_Propietario);
+
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('1', '5', '1', '1');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`, `Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('2', '4', '2', '2', '1', 'Fernando Vexenat', 'Av rancagua 2000', '4887766');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`, `Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('3', '3', '3', '3', '2', 'Carolina Nis', 'Av Ejercito Arg. 4567', '4778899');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('4', '2', '1', '1',);
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`, `Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('5', '1', '2', '2', '3', 'Leonardo Gonzalez', '27 de Abril 1345', '4332456');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`, `Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('6', '5', '3', '3', '4', 'Andres Montaño', 'San Jeronimo 34', '4221234');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('7', '4', '1', '1');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`, `Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('8', '3', '2', '2', '5', 'Mirta Legrand', 'Av Colon 1250', '4323367');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('9', '2', '3', '3');
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('10', '1', '1', '1');
