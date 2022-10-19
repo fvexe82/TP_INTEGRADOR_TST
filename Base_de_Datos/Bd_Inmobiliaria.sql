@@ -75,3 +75,20 @@ INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado
 INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`, `Id_Propietario`, `Nombre`, `Direccion`, `Contacto`) VALUES ('8', '3', '2', '2', '5', 'Mirta Legrand', 'Av Colon 1250', '4323367');
 INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('9', '2', '3', '3');
 INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('10', '1', '1', '1');
+
+# Ingresar una propiedad
+INSERT INTO `bd_inmobiliaria`.`propiedad` (`Id_Propiedad`, `Id_Tipo`, `Id_Estado`, `Id_Operacion_Comercial`) VALUES ('11', '2', '1', '1');
+# Modificar una propiedad
+UPDATE propiedad SET Id_Tipo = 1 WHERE Id_Propiedad = 11;
+# Eliminar una propiedad 
+DELETE FROM propiedad WHERE Id_Propiedad = 11;
+# Listado de propiedades TOTALES, sin distinción de estados.
+SELECT * FROM bd_inmobiliaria.propiedad;
+# Listado de propiedades DISPONIBLES para la venta.
+SELECT * FROM bd_inmobiliaria.propiedad WHERE Id_Estado = 1 AND Id_Operacion_Comercial = 3;
+# Listado de propiedades DISPONIBLES para alquiler.
+SELECT * FROM bd_inmobiliaria.propiedad WHERE Id_Estado = 1 AND Id_Operacion_Comercial = 2;
+# Listado de propiedades vendidas.
+SELECT * FROM bd_inmobiliaria.propiedad WHERE Id_Estado = 3;
+# Listado de propiedades alquiladas.
+SELECT * FROM bd_inmobiliaria.propiedad WHERE Id_Estado = 2;
