@@ -21,6 +21,7 @@ class Ventana(Frame):
         self.habilitarcajas("disabled")
         self.habilitarbtnoperaciones("normal")
         self.habilitarbtnguardar("disabled")
+        
         self.Id_Propiedad=-1
         #self.listarPropiedades()
 
@@ -40,8 +41,7 @@ class Ventana(Frame):
     def habilitarbtnguardar(self,estado):
         self.btnguardar.configure(state=estado)
         self.btncancelar.configure(state=estado)
-                
-    
+      
     def limpiarcajas(self):
         self.txtIdtipo.delete(0,END)
         self.txtIdestado.delete(0,END)
@@ -54,8 +54,7 @@ class Ventana(Frame):
     def limpiargrid(self):
         for item in self.grid.get_children():
             self.grid.delete(item)
-        
-
+      
     def llenadatos(self):
         datos= self.propiedades.consulta_propiedades()
         for row in datos:
@@ -131,48 +130,19 @@ class Ventana(Frame):
 
     
     def fListatotal (self):
-        self.limpiargrid(frame3)  
-        my_w=tk.Tk()
-        my_w.geometry("500x600")
-        my_w.title("LISTADO TOTAL DE PROPIEDADES")
-        trv = ttk.Treeview(my_w,selectmode='browse')
-        trv.grid(row=1,column=1,padx=20,pady=20)
-        trv["columns"] = ("1","2","3","4","5","6","7","8")
-        trv['show']='headings'
-        trv.column("1",width=30,anchor='c')
-        trv.column("2",width=30,anchor='c')
-        trv.column("3",width=30,anchor='c')
-        trv.column("4",width=30,anchor='c')
-        trv.column("5",width=30,anchor='c')
-        trv.column("6",width=30,anchor='c')
-        trv.column("7",width=30,anchor='c')
-        trv.column("8",width=30,anchor='c')
-
-        trv.heading("1",text='ID')
-        trv.heading("2",text='TIPO')
-        trv.heading("3",text='ESTADO')
-        trv.heading("4",text='OP-COMERCIAL')
-        trv.heading("5",text='ID-PROPIETARIO')
-        trv.heading("6",text='NOMBRE')
-        trv.heading("7",text='DIRECCION')
-        trv.heading("8",text='CONTACTO')
-        self.grid.pack(side=LEFT, fill = Y) 
-        datos= self.propiedades.consulta_propiedades()
-        for row in datos:
-            self.grid.insert("",END,text=row[0], values=(row[1],row[2],row[3],row[4],row[5],row[6],row[7]))
-          
+        self.propiedades.listarPropiedades()          
 
     def fDventa (self):
-        pass
-
+        self.propiedades.listarPropiedadesventa()
+        
     def fDalq (self):
-        pass
+        self.propiedades.listarPropiedadesalquiler()
 
     def fVen (self):
-        pass
+        self.propiedades.listarPropiedadesvendidas()
 
     def fAlq (self):
-        pass
+        self.propiedades.listarPropiedadesalquiladas()
 
     def create_widgets(self):
         frame1 = Frame(self, bg="#bfdaff")
@@ -257,7 +227,7 @@ class Ventana(Frame):
         self.grid.column("col1",width=70, anchor=CENTER)
         self.grid.column("col2",width=70, anchor=CENTER)
         self.grid.column("col3",width=100, anchor=CENTER)
-        self.grid.column("col4",width=90, anchor=CENTER)
+        self.grid.column("col4",width=140, anchor=CENTER)
         self.grid.column("col5",width=120, anchor=CENTER)
         self.grid.column("col6",width=120, anchor=CENTER)
         self.grid.column("col7",width=120, anchor=CENTER)
