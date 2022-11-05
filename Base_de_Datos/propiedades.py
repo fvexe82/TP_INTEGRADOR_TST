@@ -215,7 +215,7 @@ class propiedades:
      
     def modifica_propiedad(self,Id_Propiedad,Id_Tipo,Id_Estado,Id_Operatoria_Comercial,Id_Propietario,Nombre,Direccion,Contacto):
         cur = self.cnn.cursor()
-        sql = '''UPDATE Propiedad SET Id_Tipo='{}', Id_Estado='{}',Id_Operacion_Comercial='{}',Id_Propietario='{}',Nombre='{}',Direccion='{}',Contacto='{}' WHERE Id_Propiedad={}'''.format(Id_Tipo,Id_Estado,Id_Operatoria_Comercial,Id_Propietario,Nombre,Direccion,Contacto)
+        sql = '''UPDATE Propiedad SET Id_Tipo='{}', Id_Estado='{}',Id_Operacion_Comercial='{}',Id_Propietario='{}',Nombre='{}',Direccion='{}',Contacto='{}' WHERE Id_Propiedad={}'''.format(Id_Propiedad,Id_Tipo,Id_Estado,Id_Operatoria_Comercial,Id_Propietario,Nombre,Direccion,Contacto)
         cur.execute(sql)
         n=cur.rowcount
         self.cnn.commit()
